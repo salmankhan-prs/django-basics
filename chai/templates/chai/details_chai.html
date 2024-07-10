@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Some Chai
+{% endblock %}
+
+{% block content %}
+    <h1>Some Chai</h1>
+    <p>Here are some chai:</p>
+    <button class="bg-orange-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{% url 'all home' %}">Back to all chai</a>
+    </button>
+    <div class ="grid grid-cols-3 gap-4 m-4">
+       <div class="rounded-lg shadow-lg p-4 bg-blue-300">
+         <img class="rounded-se-md shadow-lg" src="{{ chai.image.url }}" alt="{{ chai.name }}" />
+           <h2 class ="text-2xl">{{ chai.name }}</h2>
+              <p class="text-lg">{{ chai.description }}</p>
+                <p class="text-lg">Price: ${{ chai.price }}</p>
+           </div>
+</div>
+{% endblock %}

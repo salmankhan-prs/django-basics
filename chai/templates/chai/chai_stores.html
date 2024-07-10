@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+Test conetnt for forms
+<form method = "POST">
+{% csrf_token %}
+{{form}}
+<button type="submit">Submit</button>
+</form>
+
+
+{% if stores %}
+    <h1>Some Stores</h1>
+    <p>Here are some stores:</p>
+    <div class ="grid grid-cols-3 gap-4 m-4">
+    {% for store in stores %}
+    <div class="rounded-lg shadow-lg p-4 bg-blue-300">
+      <img class="rounded-se-md shadow-lg" src="{{ store.image.url }}" alt="{{ store.name }}" />
+        <h2 class ="text-2xl">{{ store.name }}</h2>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <a href="{% url 'details_by_id' store.id %}">Details</a>
+       </div>
+    {% endfor %}
+
+
+{% endif %}
+
+
+{% endblock %}
